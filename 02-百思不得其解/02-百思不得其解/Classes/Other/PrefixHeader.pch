@@ -1,0 +1,42 @@
+//
+//  PrefixHeader.pch
+//  02-百思不得其解
+//
+//  Created by yhp on 16/9/5.
+//  Copyright © 2016年 YouHuaPei. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+YHPExtension.h"
+#import "UIBarButtonItem+YHPExtension.h"
+#import "NSDate+YHPExtension.h"
+#import "UIImage+YHPExtension.h"
+#import "UIImageView+YHPExtension.h"
+#include "YHPConst.h"
+
+#ifdef DEBUG
+#define  YHPLog(...)  NSLog(__VA_ARGS__)
+#else
+#define  YHPLog(...)
+#endif
+
+#define YHPNoteCenter [NSNotificationCenter defaultCenter]
+
+#define YHPLogFunc  YHPLog(@"%s",__func__)
+
+#define YHPRGBColor(r,g,b)  [UIColor colorWithRed:(r) /255.0 green:(g) /255.0  blue:(b) /255.0  alpha:1.0]
+#define YHPGlobalBg             YHPRGBColor(233,233,233)
+#define YHPRGBColorWithAlpha(r,g,b,t) [UIColor colorWithRed:(r) /255.0 green:(g) /255.0  blue:(b) /255.0  alpha:t / 1.0]
+#define YHPGlobalBgWithAlpha(t) YHPRGBColorWithAlpha(233,233,233,t)
+
+#define YHPTagBg    YHPRGBColor(74, 104, 209)
+#define YHPTagFont  [UIFont systemFontOfSize:14]
+
+#define YHPScreenW    [UIScreen mainScreen].bounds.size.width
+#define YHPScreenH    [UIScreen mainScreen].bounds.size.height
+
+
+
+#endif /* PrefixHeader_pch */

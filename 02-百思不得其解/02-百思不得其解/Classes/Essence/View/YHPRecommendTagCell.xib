@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tag" rowHeight="88" id="KGk-i7-Jjw" customClass="YHPRecommendTagCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="87"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-V7-6rW">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="bdH-XS-dLX"/>
+                            <constraint firstAttribute="height" constant="50" id="nRW-pd-Ezu"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVb-i8-4Jk">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="ACl-OV-22v"/>
+                            <constraint firstAttribute="width" constant="50" id="W6M-uZ-HHl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="+订阅" backgroundImage="FollowBtnBg">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <state key="highlighted" backgroundImage="FollowBtnClickBg">
+                            <color key="titleColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raq-26-Jut">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHs-On-p2z">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nsw-V7-6rW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0BF-3S-9ZQ"/>
+                    <constraint firstItem="nsw-V7-6rW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ExB-xY-Jae"/>
+                    <constraint firstItem="BHs-On-p2z" firstAttribute="bottom" secondItem="nsw-V7-6rW" secondAttribute="bottom" id="YDh-Pj-tvY"/>
+                    <constraint firstItem="Raq-26-Jut" firstAttribute="leading" secondItem="nsw-V7-6rW" secondAttribute="trailing" constant="10" id="bRu-f2-4sP"/>
+                    <constraint firstItem="Raq-26-Jut" firstAttribute="top" secondItem="nsw-V7-6rW" secondAttribute="top" id="fUm-uU-G9p"/>
+                    <constraint firstItem="BHs-On-p2z" firstAttribute="leading" secondItem="Raq-26-Jut" secondAttribute="leading" id="gtk-vx-nPv"/>
+                    <constraint firstItem="fVb-i8-4Jk" firstAttribute="leading" secondItem="Raq-26-Jut" secondAttribute="trailing" constant="10" id="hbA-Gw-zGb"/>
+                    <constraint firstItem="fVb-i8-4Jk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pb8-P8-SHf"/>
+                    <constraint firstAttribute="trailing" secondItem="fVb-i8-4Jk" secondAttribute="trailing" constant="20" id="sxC-Or-FLe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageListImageView" destination="nsw-V7-6rW" id="8wq-w4-wcN"/>
+                <outlet property="subNumber" destination="BHs-On-p2z" id="sUf-Iv-qXL"/>
+                <outlet property="themeNameLabel" destination="Raq-26-Jut" id="SzC-NM-W9l"/>
+            </connections>
+            <point key="canvasLocation" x="207" y="291"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="FollowBtnBg" width="51" height="25"/>
+        <image name="FollowBtnClickBg" width="51" height="25"/>
+    </resources>
+</document>

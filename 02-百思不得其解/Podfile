@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.3'
+
+
+target "02-百思不得其解" do
+   pod 'AFNetworking'
+   pod 'SDWebImage' , '~>3.8'
+   pod 'SVProgressHUD'
+   pod 'MJExtension'
+   pod 'MJRefresh'
+   pod 'DACircularProgress'
+   pod 'pop'
+   pod 'NJKWebViewProgress'
+end

@@ -1,0 +1,22 @@
+//
+//  彩票.pch
+//  01-彩票
+//
+//  Created by yhp on 16/5/27.
+//  Copyright © 2016年 YouHuaPei. All rights reserved.
+//
+
+//#ifdef _OBJC_
+
+#import "UIImage+YHPImage.h"
+#import "UIView+YHPFrame.h"
+#import "NSObject+Model.h"
+
+
+#define YHPKeyWindow        [UIApplication sharedApplication].keyWindow
+#define YHPScreenBounds     [UIScreen mainScreen].bounds
+#define YHPScreenW          YHPScreenBounds.size.width
+#define YHPScreenH          YHPScreenBounds.size.height
+#define YHPColor(r,g,b)     [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0      blue:(b) / 255.0 alpha:1]
+
+//#endif

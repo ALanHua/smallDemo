@@ -62,8 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
     
 //    UISplitViewControllerDelegate
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        guard let topAsDetailController = (secondaryViewController as? UINavigationController)?.topViewController as? PlayViewController
+        else {
+            return false
+        }
         
-        //  根据
+        //  MARK ....
+        
         
         return false
     }

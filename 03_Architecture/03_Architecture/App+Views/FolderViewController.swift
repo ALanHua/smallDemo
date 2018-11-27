@@ -80,7 +80,20 @@ class FolderViewController: UITableViewController {
         
     }
     
+    // MARK: - Segues and actions
+    @IBAction func createNewFolder(_ sender: UIBarButtonItem) {
+        modalTextAlert(title: .createFolder, accept: .create, placeholder: .folderName) { (string) in
+            if let s = string {
+                let newFolder = Folder(name: s, uuid: UUID())
+                self.folder.add(newFolder)
+            }
+            self.dismiss(animated: true)
+        }
+    }
     
+    @IBAction func createNewRecording(_ sender: UIBarButtonItem) {
+        
+    }
     
     
     // MARK: - Table View
@@ -89,14 +102,14 @@ class FolderViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return folder.contents.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = ""
+        let item = folder.contents[indexPath.row]
+        let identifier = item is Recording ? "RecordingCell" : "FolderCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        // .....
-        
+        cell.textLabel!.text = "\((item is Recording) ? "🔊" : "📁")  \(item.name)"
         return cell
     }
     
@@ -106,17 +119,26 @@ class FolderViewController: UITableViewController {
     
     // 编辑表格按钮，默认是删除按钮
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // ....
-        
+        folder.remove(folder.contents[indexPath.row])
     }
     
     // MARK: UIStateRestoring
     override func encodeRestorableState(with coder: NSCoder) {
-        
+        super.encodeRestorableState(with: coder)
+        coder.encode(folder.uuidPath, forKey: .uuidPathKey)
     }
     
     override func decodeRestorableState(with coder: NSCoder) {
-        
+        super.decodeRestorableState(with: coder)
+        if let uuidPath = coder.decodeObject(forKey: .uuidPathKey) as? [UUID],
+           let folder = Store.shared.item(atUUIDPath: uuidPath) as? Folder{
+           self.folder = folder
+        }else{
+            if let index = navigationController?.viewControllers.index(of:self),
+                index != 0 {
+                navigationController?.viewControllers.remove(at: index)
+            }
+        }
     }
     
     

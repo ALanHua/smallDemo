@@ -301,7 +301,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="stop:" destination="6AX-6W-ydk" eventType="touchUpInside" id="cfo-vM-gJJ"/>
+                                            <action selector="stop:" destination="6AX-6W-ydk" eventType="touchUpInside" id="1Yn-ez-lOm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -317,8 +317,8 @@
                         <viewLayoutGuide key="safeArea" id="tbK-2T-B3u"/>
                     </view>
                     <connections>
-                        <outlet property="stopButton" destination="S97-33-Hr1" id="1nW-ib-Prc"/>
-                        <outlet property="timeLabel" destination="qW9-qW-66H" id="NZk-2g-AGt"/>
+                        <outlet property="stopButton" destination="S97-33-Hr1" id="qUm-Ij-5bZ"/>
+                        <outlet property="timeLabel" destination="qW9-qW-66H" id="6du-Uo-IMx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l66-F0-PzX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -92,9 +92,37 @@ class FolderViewController: UITableViewController {
     }
     
     @IBAction func createNewRecording(_ sender: UIBarButtonItem) {
-        
+        performSegue(withIdentifier: .showRecorder, sender: sender)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        if identifier == .showFolder {
+            guard let folderVC = segue.destination as? FolderViewController,
+                let selectedFolder = selectedItem as? Folder else{
+                    fatalError()
+            }
+            folderVC.folder = selectedFolder
+        }else if identifier == .showRecorder {
+            guard let recordVC = segue.destination as? RecordViewController else {
+                fatalError()
+            }
+            recordVC.folder = folder
+        }else if identifier == .showPlayer {
+            guard let playVC = segue.destination as? PlayViewController,
+            let recording = selectedItem as? Recording else {
+                fatalError()
+            }
+            playVC.recording = recording
+            if let indexPath = tableView.indexPathForSelectedRow{
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+        
+    }
     
     // MARK: - Table View
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -67,8 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
             return false
         }
         
-        //  MARK ....
-        
+        if topAsDetailController.recording == nil{
+            return true
+        }
         
         return false
     }

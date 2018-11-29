@@ -51,7 +51,7 @@ class Player: NSObject,AVAudioPlayerDelegate {
         return !audioPlayer.isPlaying && audioPlayer.currentTime > 0
     }
     
-    func togglePlayer() {
+    func togglePlay() {
         if audioPlayer.isPlaying {
             audioPlayer.pause()
             timer?.invalidate()

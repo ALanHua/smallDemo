@@ -9,7 +9,8 @@
 import UIKit
 import AVFoundation
 
-class PlayViewController:  UIViewController{
+class PlayViewController:  UIViewController,AVAudioPlayerDelegate,
+    UITextFieldDelegate{
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var playButton: UIButton!
@@ -34,14 +35,17 @@ class PlayViewController:  UIViewController{
         updateForChangedRecording()
         
         NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(notification:)), name: Store.changedNotification, object: nil)
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        recording = nil
     }
     
     @objc func storeChanged(notification: Notification) {
         guard let item = notification.object as? Item,
-            item === recording else {
-            updateForChangedRecording()
-        }
+            item === recording else {return}
+        updateForChangedRecording()
     }
     
     func updateForChangedRecording(){
@@ -90,6 +94,43 @@ class PlayViewController:  UIViewController{
             playButton?.setTitle(.play, for: .normal)
         }
     }
+    //    delegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let r = recording,let text = textField.text {
+            r.saveName(text)
+            title = r.name
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    @IBAction func setProgress() {
+        guard let s = progressSlider else { return }
+        audioPlayer?.setProgress(TimeInterval(s.value))
+    }
+    
+    @IBAction func play() {
+        audioPlayer?.togglePlay()
+        updatePlayButton()
+    }
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        coder.encode(recording?.uuidPath, forKey: .uuidPathKey)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+        if let uuidPath = coder.decodeObject(forKey: .uuidPathKey) as? [UUID],
+            let recording = Store.shared.item(atUUIDPath: uuidPath) as? Recording
+        {
+   
+            self.recording = recording
+        }
+    }
+    
 }
 
 fileprivate extension String {

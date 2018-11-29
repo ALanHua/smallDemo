@@ -37,14 +37,14 @@ extension UIViewController {
         
         alert.addTextField { $0.placeholder = placeholder}
         
-        alert.addAction(UIAlertAction(title: title, style: .cancel){ _ in
+        alert.addAction(UIAlertAction(title: cancel, style: .cancel){ _ in
             callback(nil)
         })
         
-        alert.addAction(UIAlertAction(title: title, style: .default){ _ in
+        alert.addAction(UIAlertAction(title: accept, style: .default){ _ in
             callback(alert.textFields?.first?.text)
         })
-        
+        present(alert, animated: true)
     }
 }
 

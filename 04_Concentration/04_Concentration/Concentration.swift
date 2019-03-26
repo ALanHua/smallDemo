@@ -38,14 +38,17 @@ class Concentration {
     }
     
     init(numberOfPairsOfCards: Int) {
+        var unShuffeldCards: [Card] = []
         for _ in 1...numberOfPairsOfCards{
             let card = Card()
-            cards += [card,card]
+            unShuffeldCards += [card,card]
         }
         //  TODO: Shuffle the cards
-        
+        //  使用额外的存储空间来洗牌
+        while !unShuffeldCards.isEmpty {
+            let randomIndex = unShuffeldCards.count.arc4Random
+            let card = unShuffeldCards.remove(at: randomIndex)
+            cards.append(card)
+        }
     }
-    
-    
-    
 }

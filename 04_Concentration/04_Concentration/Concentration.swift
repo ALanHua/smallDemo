@@ -10,9 +10,24 @@ import Foundation
 
 class Concentration {
     
-    var cards = [Card]()
-    var indexOfOneAndOnlyFaceUpCard : Int?
-    
+    private(set) var cards = [Card]()
+    private var indexOfOneAndOnlyFaceUpCard : Int?{
+        get{
+            var foundIndex:Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    guard foundIndex == nil else{return nil}
+                    foundIndex = index
+                }
+            }
+            return foundIndex
+        }
+        set{
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     /// 选择卡片
     /// - Parameter index: 下标
@@ -25,19 +40,16 @@ class Concentration {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             }else {
-                // 有或者有两张翻开
-                for flipdownIndex in cards.indices {
-                    cards[flipdownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
     }
     
     init(numberOfPairsOfCards: Int) {
+        //  断言
+        assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)) : You must have at least one pair of cards")
+        
         var unShuffeldCards: [Card] = []
         for _ in 1...numberOfPairsOfCards{
             let card = Card()
